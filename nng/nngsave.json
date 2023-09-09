@@ -105,7 +105,7 @@
     {
       "lean": "lemma zero_pow_succ (m : mynat) : (0 : mynat) ^ (succ m) = 0 :=\n",
       "isSolved": true,
-      "editorText": "rw pow_succ,\r\nrw mul_zero,\r\nrefl,"
+      "editorText": "--rw pow_succ,\r\n--rw mul_zero,\r\nrefl,"
     },
     {
       "lean": "lemma pow_one (a : mynat) : a ^ (1 : mynat) = a :=\n",
@@ -134,7 +134,8 @@
     },
     {
       "lean": "lemma add_squared (a b : mynat) :\n  (a + b) ^ (2 : mynat) = a ^ (2 : mynat) + b ^ (2 : mynat) + 2 * a * b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw two_eq_succ_one,\r\nrw one_eq_succ_zero,\r\nrepeat {rw pow_succ},\r\nrepeat {rw pow_zero},\r\nrepeat {rw one_mul},\r\nrepeat {rw mul_add},\r\nrepeat {rw add_mul},\r\nrepeat {rw succ_mul},\r\nrepeat {rw zero_mul},\r\nrw zero_add,\r\nrepeat {rw add_mul},\r\nsimp,\r\n\r\n"
     },
     {
       "lean": "example (P Q : Type) (p : P) (h : P → Q) : Q :=\n",
