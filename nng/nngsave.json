@@ -259,11 +259,13 @@
     },
     {
       "lean": "lemma or_symm (P Q : Prop) : P ∨ Q → Q ∨ P :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,cases h with p q,\r\nright,\r\nexact p,\r\nleft,\r\nexact q,"
     },
     {
       "lean": "lemma and_or_distrib_left (P Q R : Prop) : P ∧ (Q ∨ R) ↔ (P ∧ Q) ∨ (P ∧ R) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "split,\r\nintro h,\r\ncases h with p i,\r\ncases i with q r,\r\nleft,\r\nsplit,\r\nexact p,\r\nexact q,\r\n\r\nright,\r\nsplit,\r\nexact p,\r\nexact r,\r\n\r\nintro j,\r\ncases j with k l,\r\nsplit,\r\ncases k with p q,\r\nexact p,\r\ncases k with p q,\r\nleft,\r\nexact q,\r\n\r\ncases l with p r,\r\nsplit,\r\nexact p,\r\nright,\r\nexact r,"
     },
     {
       "lean": "lemma contra (P Q : Prop) : (P ∧ ¬ P) → Q :=\n",
