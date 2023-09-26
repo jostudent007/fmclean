@@ -319,11 +319,13 @@
     },
     {
       "lean": "theorem succ_ne_zero (a : mynat) : succ a ≠ 0 := \n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "symmetry,\r\nexact zero_ne_succ a,"
     },
     {
       "lean": "lemma add_left_eq_zero {{a b : mynat}} (H : a + b = 0) : b = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases b with d,\r\nrefl,\r\nrw add_succ a d at H,\r\nexfalso,\r\nhave h := succ_ne_zero (a + d),\r\nhave i := h(H),\r\nexact i,"
     },
     {
       "lean": "lemma add_right_eq_zero {a b : mynat} : a + b = 0 → a = 0 :=\n",
