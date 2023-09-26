@@ -339,7 +339,8 @@
     },
     {
       "lean": "lemma ne_succ_self (n : mynat) : n ≠ succ n :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases n with h,\r\nexact zero_ne_succ 0,\r\nintro i,\r\nhave j := succ_inj(i),\r\nsymmetry at j,\r\nrw succ_eq_add_one at j,\r\nhave k := eq_zero_of_add_right_eq_self(j),\r\nrw one_eq_succ_zero at k,\r\napply succ_ne_zero 0,\r\nexact k,\r\n\r\n"
     },
     {
       "lean": "theorem mul_pos (a b : mynat) : a ≠ 0 → b ≠ 0 → a * b ≠ 0 :=\n",
