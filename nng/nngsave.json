@@ -409,11 +409,13 @@
     },
     {
       "lean": "lemma le_succ_self (a : mynat) : a ≤ succ a :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "apply le_succ,\r\nrefl,\r\n"
     },
     {
       "lean": "theorem add_le_add_right {a b : mynat} : a ≤ b → ∀ t, (a + t) ≤ (b + t) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro t,\r\nintro h,\r\ncases t with i t,\r\n--rw add_zero a,\r\n--rw add_zero b,\r\n--exact t,\r\nuse i,\r\nrw t,\r\nrw add_right_comm a i h,\r\nrefl, "
     },
     {
       "lean": "theorem le_of_succ_le_succ (a b : mynat) : succ a ≤ succ b → a ≤ b :=\n",
