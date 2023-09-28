@@ -404,7 +404,8 @@
     },
     {
       "lean": "theorem le_total (a b : mynat) : a ≤ b ∨ b ≤ a :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "revert a,\r\ninduction b with h i,\r\nintro a,\r\nright,\r\nexact zero_le a,\r\nintro a,\r\ncases a with j k,\r\nleft,\r\nexact zero_le (succ h),\r\ncases i j,\r\nleft,\r\napply succ_le_succ j h,\r\nexact h_1,\r\nright,\r\napply succ_le_succ h j,\r\nexact h_1,"
     },
     {
       "lean": "lemma le_succ_self (a : mynat) : a ≤ succ a :=\n",
