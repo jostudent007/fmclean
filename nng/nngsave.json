@@ -394,11 +394,13 @@
     },
     {
       "lean": "lemma le_zero (a : mynat) (h : a ≤ 0) : a = 0 :=\n",
-      "editorText": "cases a,\r\nrefl,"
+      "isSolved": true,
+      "editorText": "cases h with i h,\r\nsymmetry at h,\r\nhave j := add_right_eq_zero h,\r\nexact j,"
     },
     {
       "lean": "lemma succ_le_succ (a b : mynat) (h : a ≤ b) : succ a ≤ succ b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases h with i h,\r\nrw h,\r\nuse i,\r\nrw succ_add a i,\r\nrefl,"
     },
     {
       "lean": "theorem le_total (a b : mynat) : a ≤ b ∨ b ≤ a :=\n",
