@@ -419,11 +419,13 @@
     },
     {
       "lean": "theorem le_of_succ_le_succ (a b : mynat) : succ a ≤ succ b → a ≤ b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\r\ncases h with i h,\r\nrw succ_add a i at h,\r\nhave j := succ_inj(h),\r\nuse i,\r\nexact j,"
     },
     {
       "lean": "theorem not_succ_le_self (a : mynat) : ¬ (succ a ≤ a) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\r\ninduction a with i j,\r\nhave k := le_zero(succ 0) h,\r\napply succ_ne_zero 0,\r\nexact k,\r\napply j,\r\napply le_of_succ_le_succ (succ i) i,\r\nexact h,"
     },
     {
       "lean": "theorem add_le_add_left {a b : mynat} (h : a ≤ b) (t : mynat) :\n  t + a ≤ t + b :=\n",
