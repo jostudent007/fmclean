@@ -439,7 +439,8 @@
     },
     {
       "lean": "lemma lt_aux_two (a b : mynat) : succ a ≤ b → a ≤ b ∧ ¬ (b ≤ a) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro h,\r\nsplit,\r\napply le_of_succ_le_succ,\r\napply le_succ,\r\nexact h,\r\nintro i,\r\nhave j := le_trans (succ a) b a h i,\r\napply not_succ_le_self a,\r\nexact j,"
     },
     {
       "lean": "lemma lt_iff_succ_le (a b : mynat) : a < b ↔ succ a ≤ b :=\n",
