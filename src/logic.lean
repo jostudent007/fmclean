@@ -199,37 +199,76 @@ end
 theorem demorgan_disj :
   ¬(P∨Q) → (¬P ∧ ¬Q)  :=
 begin
-  sorry,
+  intro npq,
+  split,
+  intro p,
+  apply npq,
+  left,
+  exact p,
+  intro q,
+  apply npq,
+  right,
+  exact q,
 end
 
 theorem demorgan_disj_converse :
   (¬P ∧ ¬Q) → ¬(P∨Q)  :=
 begin
-  sorry,
+  intros npq pq,
+  have h : false := disj_as_negconj P Q pq npq,
+  exact h,
 end
 
 theorem demorgan_conj :
   ¬(P∧Q) → (¬Q ∨ ¬P)  :=
 begin
-  sorry,
+  intro npq,
+  by_cases p : P,
+  {
+    left,
+    intro q,
+    apply npq,
+    split,
+    {
+      exact p,
+    },
+    {
+      exact q,
+    }
+  },
+  {
+    right,
+    exact p,
+  }
 end
 
 theorem demorgan_conj_converse :
   (¬Q ∨ ¬P) → ¬(P∧Q)  :=
 begin
-  sorry,
+  intros h pq,
+  cases h with nq np,
+  {
+    exact nq pq.2,
+  },
+  {
+    exact np pq.1,
+  }
 end
 
 theorem demorgan_conj_law :
   ¬(P∧Q) ↔ (¬Q ∨ ¬P)  :=
 begin
-  sorry,
+  split,
+  apply demorgan_conj,
+  apply demorgan_conj_converse,
 end
 
 theorem demorgan_disj_law :
   ¬(P∨Q) ↔ (¬P ∧ ¬Q)  :=
 begin
-  sorry,
+  split,
+  apply demorgan_disj,
+  apply demorgan_disj_converse,
 end
 
 ------------------------------------------------
@@ -239,25 +278,116 @@ end
 theorem distr_conj_disj :
   P∧(Q∨R) → (P∧Q)∨(P∧R)  :=
 begin
-  sorry,
+  intros h,
+  have p : P := h.1,
+  have qr : Q ∨ R := h.2,
+  cases qr with q r,
+  {
+    left,
+    split,
+    {
+      exact p,
+    },
+    {
+      exact q,
+    }
+  },
+  {
+    right,
+    split,
+    {
+      exact p,
+    },
+    {
+      exact r,
+    }
+  }
 end
 
 theorem distr_conj_disj_converse :
   (P∧Q)∨(P∧R) → P∧(Q∨R)  :=
 begin
-  sorry,
+  intro h,
+  cases h with pq pr,
+  {
+    split,
+    {
+      exact pq.1,
+    },
+    {
+      left,
+      exact pq.2,
+    }
+  },
+  {
+    split,
+    {
+      exact pr.1,
+    },
+    {
+      right,
+      exact pr.2,
+    }
+  }
 end
 
 theorem distr_disj_conj :
   P∨(Q∧R) → (P∨Q)∧(P∨R)  :=
 begin
-  sorry,
+   intro h,
+  cases h with p qr,
+  {
+    split,
+    {
+      left,
+      exact p,
+    },
+    {
+      left,
+      exact p,
+    }
+  },
+  {
+    split,
+    {
+      right,
+      exact qr.1,
+    },
+    {
+      right,
+      exact qr.2,
+    }
+  }
 end
 
 theorem distr_disj_conj_converse :
   (P∨Q)∧(P∨R) → P∨(Q∧R)  :=
 begin
-  sorry,
+  intro h,
+  have pq : P ∨ Q := h.1,
+  have pr : P ∨ R := h.2,
+  cases pq with p q,
+  {
+    left,
+    exact p,
+  },
+  {
+    cases pr with p r,
+    {
+      left,
+      exact p,
+    },
+    {
+      right,
+      split,
+      {
+        exact q,
+      },
+      {
+        exact r,
+      }
+    }
+  } 
 end
 
 
